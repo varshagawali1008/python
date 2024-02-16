@@ -1,0 +1,843 @@
+slip1 q1 Write a Python function to check whether a number is in a given range. 
+
+
+ Write a Python function to check whether a number is in a given range. 
+def is_in_range(number, lower_bound, upper_bound):
+    """
+    Check if a number is within a given range.
+
+    Parameters:
+    number (int or float): The number to check.
+    lower_bound (int or float): The lower bound of the range.
+    upper_bound (int or float): The upper bound of the range.
+
+    Returns:
+    bool: True if the number is within the range, False otherwise.
+    """
+    return lower_bound <= number <= upper_bound
+
+# Example usage:
+number = 10
+lower_bound = 5
+upper_bound = 15
+print(is_in_range(number, lower_bound, upper_bound))  # Output: True
+
+
+slip1 q2 Write a Python program to find set difference, union, intersection and symmetric
+difference.
+
+python
+# Define two sets
+set1 = {1, 2, 3, 4, 5}
+set2 = {3, 4, 5, 6, 7}
+
+# Find set difference
+difference = set1 - set2
+print(f"Set Difference: {difference}")
+
+# Find set union
+union_set = set1 | set2
+print(f"Set Union: {union_set}")
+
+# Find set intersection
+intersection_set = set1 & set2
+print(f"Set Intersection: {intersection_set}")
+
+# Find symmetric difference
+symmetric_difference = set1 ^ set2
+print(f"Symmetric Difference: {symmetric_difference}")
+
+
+
+slip 2 q1  Write a Python program to get the 4
+th element from front and 4th element from last of a
+tuple. 
+
+
+
+def main():
+    # Example tuple
+    my_tuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    # Get the 4th element from the front
+    fourth_front = my_tuple[3]
+    print("4th element from front:", fourth_front)
+
+    # Get the 4th element from the end
+    fourth_end = my_tuple[-4]
+    print("4th element from end:", fourth_end)
+
+if _name_ == "_main_":
+    main()
+
+slip 2 q2 ) Write a Python program to combine two dictionary adding values for common keys.
+d1 = {'a': 100, 'b': 200, 'c':300} d2 = {'a': 300, 'b': 200,'d':400}
+Sample output: ({'a': 400, 'b': 400,'d': 400, 'c': 300})
+
+
+
+
+ def combine_dicts(d1, d2):
+    combined_dict = d1.copy()  # Initialize the combined dictionary with the first dictionary
+    
+    # Iterate over the second dictionary
+    for key, value in d2.items():
+        # If the key is present in the combined dictionary, add the values
+        if key in combined_dict:
+            combined_dict[key] += value
+        # Otherwise, add the key-value pair to the combined dictionary
+        else:
+            combined_dict[key] = value
+    
+    return combined_dict
+
+# Test the function with given dictionaries
+d1 = {'a': 100, 'b': 200, 'c': 300}
+d2 = {'a': 300, 'b': 200, 'd': 400}
+result = combine_dicts(d1, d2)
+print("Combined Dictionary:", result)
+
+slip 4 q1Write a Python program to find the repeated items of a tuple
+
+
+
+def find_repeated_items(t):
+    repeated_items = []
+    for item in t:
+        if t.count(item) > 1 and item not in repeated_items:
+            repeated_items.append(item)
+    return repeated_items
+
+# Test the function
+my_tuple = (1, 2, 3, 4, 2, 5, 6, 2, 7)
+repeated_items = find_repeated_items(my_tuple)
+print("Repeated items:", repeated_items)
+
+slip 4 q2 Write a Python program to match key values in two dictionaries. [20 M]
+Sample dictionary: {'key1': 1, 'key2': 3, 'key3': 2}, {'key1': 1, 'key2': 2}
+Expected output: key1: 1 is present in both x and y
+
+
+
+def match_key_values(dict1, dict2):
+    for key, value in dict1.items():
+        if key in dict2 and dict2[key] == value:
+            print(f"{key}: {value} is present in both dictionaries")
+
+# Sample dictionaries
+dict1 = {'key1': 1, 'key2': 3, 'key3': 2}
+dict2 = {'key1': 1, 'key2': 2}
+
+# Function call to match key values
+match_key_values(dict1, dict2)
+
+slip5 q1  Write a Python program to sort the tuple T=(4,2,6.8,1.8,10) .
+
+
+#Original tuple
+T = (4, 2, 6.8, 1.8, 10)
+
+# Sort the tuple
+sorted_T = tuple(sorted(T))
+
+# Print the sorted tuple
+print("Sorted tuple:", sorted_T)
+
+slip 5 q2 Write a function to calculate the sum of numbers from 0 to n
+
+
+
+def sum_from_zero_to_n(n):
+    """
+    Calculate the sum of numbers from 0 to n.
+
+    Parameters:
+    n (int): The upper limit of the range.
+
+    Returns:
+    int: The sum of numbers from 0 to n.
+    """
+    return (n * (n + 1)) // 2
+
+# Example usage:
+n = 10
+result = sum_from_zero_to_n(n)
+print("Sum of numbers from 0 to", n, ":", result)  # Output: Sum of numbers from 0 to 10 : 55
+
+slip 6 q1Write a Python program to print the set difference and a symmetric difference of two sets
+
+
+def main():
+    set1 = {1, 2, 3, 4, 5}
+    set2 = {4, 5, 6, 7, 8}
+
+    # Set difference
+    difference = set1 - set2
+    print("Set Difference:", difference)
+
+    # Set symmetric difference
+    symmetric_difference = set1 ^ set2
+    print("Set Symmetric Difference:", symmetric_difference)
+
+if _name_ == "_main_":
+    main()
+
+slip 6 q2 ) Write a Python program to create and display all combinations of letters, selecting each
+letter from a different key in a dictionary. [20 M]
+Sample data: {'1':['a','b'], 2':['c','d']}
+Expected Output:
+ac
+ad
+bc
+bd
+
+
+
+import itertools
+
+def display_combinations(data):
+    # Get all values from the dictionary
+    values = [data[key] for key in sorted(data.keys())]
+
+    # Generate all combinations of letters from the values
+    combinations = itertools.product(*values)
+
+    # Display each combination
+    for combination in combinations:
+        print(''.join(combination))
+
+# Sample data
+data = {'1': ['a', 'b'], '2': ['c', 'd']}
+
+# Display combinations
+display_combinations(data)
+
+slip 7 q1Write a Python program to find maximum and the minimum value in a set. 
+
+
+def find_max_min(s):
+    if not s:
+        print("The set is empty.")
+        return None, None
+    else:
+        max_value = max(s)
+        min_value = min(s)
+        return max_value, min_value
+
+# Example usage:
+my_set = {3, 7, 1, 9, 2}
+max_value, min_value = find_max_min(my_set)
+print("Maximum value in the set:", max_value)
+print("Minimum value in the set:", min_value)
+
+slip7 q2 Write a Python script to generate and print a dictionary that contains a number (between 1
+to n) in the form (x, x*x).
+Sample Dictionary (n = 5): Expected Output: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+
+
+def generate_square_dictionary(n):
+    square_dict = {x: x*x for x in range(1, n+1)}
+    return square_dict
+
+# Example usage:
+n = 5
+result_dict = generate_square_dictionary(n)
+print("Generated Dictionary:", result_dict)
+
+slip7 q2 def generate_square_dictionary(n):
+    square_dict = {x: x*x for x in range(1, n+1)}
+    return square_dict
+
+# Example usage:
+n = 5
+result_dict = generate_square_dictionary(n)
+print("Generated Dictionary:", result_dict)
+
+
+slip8 q1# Write a Python program to print average of all elements of sets
+
+
+Python program to get average of a list 
+def Average(lst): 
+    return sum(lst) / len(lst) 
+ 
+# Driver Code 
+lst = [15, 9, 55, 41, 35, 20, 62, 49] 
+average = Average(lst) 
+ 
+# Printing average of the list 
+print("Average of the list =", round(average, 2)) 
+
+slip8 q2 Write a Python program to match key values in two dictionaries. [20 M]
+Sample dictionary: {'key1': 1, 'key2': 3, 'key3': 2}, {'key1': 1, 'key2': 2}
+Expected output: key1: 1 is present in both x and y
+
+def match_key_values(dict1, dict2):
+    for key, value in dict1.items():
+        if key in dict2 and dict2[key] == value:
+            print(f"{key}: {value} is present in both x and y")
+
+# Sample dictionaries
+dict_x = {'key1': 1, 'key2': 3, 'key3': 2}
+dict_y = {'key1': 1, 'key2': 2}
+
+# Matching key values
+match_key_values(dict_x, dict_y)
+
+
+
+slip 9 q1  Write a Python program to create a tuple using two different tuples
+
+
+def create_combined_tuple(tuple1, tuple2):
+    combined_tuple = tuple1 + tuple2
+    return combined_tuple
+
+# Example usage:
+tuple1 = (1, 2, 3)
+tuple2 = ('a', 'b', 'c')
+combined_tuple = create_combined_tuple(tuple1, tuple2)
+print("Combined Tuple:", combined_tuple)
+
+slip 9 q2 Write a Python program to sort (ascending and descending) a dictionary by value
+
+
+def sort_dict_by_value(d, reverse=False):
+    sorted_dict = dict(sorted(d.items(), key=lambda item: item[1], reverse=reverse))
+    return sorted_dict
+
+# Example dictionary
+my_dict = {'a': 5, 'b': 2, 'c': 8, 'd': 1}
+
+# Sort dictionary by value in ascending order
+sorted_asc = sort_dict_by_value(my_dict)
+print("Ascending order:", sorted_asc)
+
+# Sort dictionary by value in descending order
+sorted_desc = sort_dict_by_value(my_dict, reverse=True)
+print("Descending order:", sorted_desc)
+
+slip 10 q1 ) Write an anonymous function to calculate area of square
+
+area_of_square = lambda side: side ** 2
+
+# Example usage:
+side_length = 5
+print("Area of square with side length", side_length, ":", area_of_square(side_length))
+
+slip10 q2Write a Python program to create a dictionary from a string.
+Sample String: ’Hello all’
+Expected output: {'e': 1, 'o': 1, 'a': 1, 'l': 4, 'H': 1} 
+ 
+
+
+def create_char_frequency_dict(s):
+    char_frequency_dict = {}
+    for char in s:
+        if char in char_frequency_dict:
+            char_frequency_dict[char] += 1
+        else:
+            char_frequency_dict[char] = 1
+    return char_frequency_dict
+
+# Sample string
+sample_string = 'Hello all'
+
+# Create dictionary from the string
+result_dict = create_char_frequency_dict(sample_string)
+
+# Print the result
+print("Resulting Dictionary:", result_dict)
+
+slip11 q1 ) Write a Python program to accept the strings which contains all vowels. 
+
+
+def contains_all_vowels(s):
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    for vowel in vowels:
+        if vowel not in s.lower():
+            return False
+    return True
+
+# Example usage:
+input_string = input("Enter a string: ")
+if contains_all_vowels(input_string):
+    print("The string contains all vowels.")
+else:
+    print("The string does not contain all vowels.")
+
+slip11 q2Write a Python program to reverse a given number
+
+
+ def reverse_number(number):
+    # Convert the number to a string and reverse it
+    reversed_str = str(number)[::-1]
+    # Convert the reversed string back to an integer
+    reversed_number = int(reversed_str)
+    return reversed_number
+
+# Example usage:
+number = 12345
+reversed_number = reverse_number(number)
+print("Original number:", number)
+print("Reversed number:", reversed_number)
+
+
+
+slip12 q1Write a Python program to find the length of a string without using built-in function. 
+
+
+
+def string_length(s):
+    length = 0
+    for char in s:
+        length += 1
+    return length
+
+# Example usage:
+input_string = input("Enter a string: ")
+length = string_length(input_string)
+print("Length of the string:", length)
+
+slip 12 q2  ) Write a Python program to accept string and remove the characters which have odd index
+values of a given string using user defined function
+
+
+
+ def remove_odd_index_characters(s):
+    result = ""
+    for i in range(len(s)):
+        # Check if the index is even
+        if i % 2 == 0:
+            result += s[i]
+    return result
+
+# Example usage:
+input_string = input("Enter a string: ")
+result_string = remove_odd_index_characters(input_string)
+print("String with odd index characters removed:", result_string)
+
+slip 13 q1 Write a program which prints Fibonacci series of a number
+
+
+def fibonacci_series(n):
+    # Initialize the first two terms of the series
+    fib_series = [0, 1]
+
+    # Generate Fibonacci series up to n terms
+    while len(fib_series) < n:
+        next_term = fib_series[-1] + fib_series[-2]
+        fib_series.append(next_term)
+
+    return fib_series
+
+# Example usage:
+num_terms = int(input("Enter the number of terms in Fibonacci series: "))
+series = fibonacci_series(num_terms)
+print("Fibonacci series up to", num_terms, "terms:", series)
+
+slip 13 q2 Write a Python program to accept a string and from a given string where all occurrences of
+its first character have been changed to '$', except the first char itself. 
+
+
+ def replace_first_char_occurrences(s):
+    if len(s) <= 1:
+        return s
+
+    first_char = s[0]
+    modified_string = first_char  # Keep the first character unchanged
+
+    for char in s[1:]:  # Iterate from the second character
+        if char == first_char:
+            modified_string += '$'
+        else:
+            modified_string += char
+
+    return modified_string
+
+# Example usage:
+input_string = input("Enter a string: ")
+modified_string = replace_first_char_occurrences(input_string)
+print("Modified string:", modified_string)
+
+slip 14 q1Write a Python program to create a tuple of n numbers and print maximum, minimum, and
+sum of elements in a tuple. 
+
+
+def calculate_tuple_statistics(numbers):
+    if not numbers:
+        return None, None, 0
+
+    maximum = max(numbers)
+    minimum = min(numbers)
+    total_sum = sum(numbers)
+
+    return maximum, minimum, total_sum
+
+# Example usage:
+n = int(input("Enter the number of elements in the tuple: "))
+numbers = tuple(map(int, input(f"Enter {n} numbers separated by space: ").split()))
+
+maximum, minimum, total_sum = calculate_tuple_statistics(numbers)
+if maximum is not None:
+    print("Maximum:", maximum)
+    print("Minimum:", minimum)
+    print("Sum:", total_sum)
+else:
+    print("Tuple is empty.")
+
+slip14 q2Write a Python program which accept an integer value ‘n’ and display all prime numbers till ‘n’
+
+
+
+ def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+def display_primes_up_to_n(n):
+    print("Prime numbers up to", n, ":")
+    for num in range(2, n + 1):
+        if is_prime(num):
+            print(num, end=" ")
+
+# Example usage:
+n = int(input("Enter an integer value: "))
+display_primes_up_to_n(n)
+
+slip 15 q1 Write a python program to check if a string is a Palindrome or not
+
+
+def is_palindrome(s):
+    # Convert the string to lowercase and remove spaces
+    s = s.lower().replace(" ", "")
+    # Check if the string is equal to its reverse
+    return s == s[::-1]
+
+# Example usage:
+input_string = input("Enter a string: ")
+if is_palindrome(input_string):
+    print("The string is a palindrome.")
+else:
+    print("The string is not a palindrome.")
+
+slip 15 q2 Write a Sequential search function which searches an item in a sorted list. The function
+should return the index of element to be searched in the list
+
+
+ def sequential_search_sorted(arr, target):
+    """
+    Perform sequential search on a sorted list.
+
+    Parameters:
+    arr (list): A sorted list.
+    target: The item to search for.
+
+    Returns:
+    int: The index of the target item if found, otherwise -1.
+    """
+    for i, item in enumerate(arr):
+        if item == target:
+            return i
+        elif item > target:
+            return -1
+    return -1
+
+# Example usage:
+sorted_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+target = 7
+index = sequential_search_sorted(sorted_list, target)
+if index != -1:
+    print(f"Item {target} found at index {index}.")
+else:
+    print(f"Item {target} not found.")
+
+
+
+slip16 q1Write a Python program to create tuple of n numbers, print the first half values of tuple in
+one line and the last half values of tuple on next line. 
+def print_half_tuples(numbers):
+    n = len(numbers)
+    half_point = n // 2
+
+    # Print the first half values in one line
+    print("First half:", end=" ")
+    print(*numbers[:half_point])
+
+    # Print the last half values on the next line
+    print("Last half:", end=" ")
+    print(*numbers[half_point:])
+
+# Example usage with a tuple of numbers
+numbers_tuple = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+# Call the function
+print_half_tuples(numbers_tuple)
+
+
+
+
+slip16 q2 Write a Python program which prints fibonacci series of a number
+
+
+def fibonacci_series(n):
+    # Initialize the first two terms of the series
+    fib_series = [0, 1]
+
+    # Generate Fibonacci series up to n terms
+    while len(fib_series) < n:
+        next_term = fib_series[-1] + fib_series[-2]
+        fib_series.append(next_term)
+
+    return fib_series
+
+# Example usage:
+num_terms = int(input("Enter the number of terms in Fibonacci series: "))
+series = fibonacci_series(num_terms)
+print("Fibonacci series up to", num_terms, "terms:", series)
+
+
+
+ slip 17 q1 Write a Python program to accept and convert string in uppercase or vice versa.
+
+
+def convert_case(string):
+    converted_string = ""
+    for char in string:
+        if char.islower():
+            converted_string += char.upper()
+        elif char.isupper():
+            converted_string += char.lower()
+        else:
+            converted_string += char
+    return converted_string
+
+def main():
+    user_input = input("Enter a string: ")
+    converted_string = convert_case(user_input)
+    print("Converted string:", converted_string)
+
+if _name_ == "_main_":
+    main()
+
+
+
+slip16 q1Write a Python program to create tuple of n numbers, print the first half values of tuple in
+one line and the last half values of tuple on next line. 
+
+slip16 q2 Write a Python program which prints fibonacci series of a number. 
+
+slip 17 q2Write a Python program which accepts an integer value ‘n’ and display all prime
+numbers till ‘n’
+
+
+ def is_prime(num):
+    if num <= 1:
+        return False
+    if num == 2:
+        return True
+    if num % 2 == 0:
+        return False
+    for i in range(3, int(num**0.5) + 1, 2):
+        if num % i == 0:
+            return False
+    return True
+
+def display_primes(n):
+    print("Prime numbers up to", n, ":")
+    for num in range(2, n + 1):
+        if is_prime(num):
+            print(num, end=" ")
+
+def main():
+    try:
+        n = int(input("Enter a number: "))
+        if n < 2:
+            print("Please enter a number greater than or equal to 2.")
+        else:
+            display_primes(n)
+    except ValueError:
+        print("Please enter a valid integer.")
+
+if _name_ == "_main_":
+    main()
+
+
+
+
+slip 18 q1Write an anonymous function to calculate area of square
+
+ area_of_square = lambda side: side ** 2
+
+# Example usage:
+side_length = 5
+print("Area of square with side length", side_length, "is:", area_of_square(side_length))
+
+
+
+
+slip 18 q2(OR)) Write a Python program to count frequency of each character in a given string using user
+defined function.
+
+ def count_char_frequency(string):
+    frequency = {}
+
+    for char in string:
+        if char in frequency:
+            frequency[char] += 1
+        else:
+            frequency[char] = 1
+
+    return frequency
+
+def main():
+    user_input = input("Enter a string: ")
+    frequency = count_char_frequency(user_input)
+
+    print("Character frequencies:")
+    for char, freq in frequency.items():
+        print(f"'{char}': {freq}")
+
+if _name_ == "_main_":
+    main()
+
+
+
+
+ slip 19 q1 ) Write a Python program to calculate the average of numbers in a given list
+
+
+def calculate_average(num_list):
+    if not num_list:
+        return None
+    
+    total = 0
+    for num in num_list:
+        total += num
+    average = total / len(num_list)
+    return average
+
+def main():
+    try:
+        num_list = list(map(float, input("Enter numbers separated by space: ").split()))
+        average = calculate_average(num_list)
+        if average is not None:
+            print("Average:", average)
+        else:
+            print("The list is empty.")
+    except ValueError:
+        print("Please enter valid numbers separated by space.")
+
+if _name_ == "_main_":
+    main()
+
+
+
+
+
+ slip 19 q2(OR) Write a program to display following pattern. [20 M]
+1 2 3 4
+1 2 3
+1 2
+1
+
+
+def display_pattern(rows):
+    for i in range(rows, 0, -1):
+        for j in range(1, i + 1):
+            print(j, end=" ")
+        print()
+
+def main():
+    rows = int(input("Enter the number of rows: "))
+    display_pattern(rows)
+
+if _name_ == "_main_":
+    main()
+
+
+
+
+slip 20 q1 area_of_square = lambda side: side ** 2
+
+# Example usage:
+side_length = 5
+print("Area of square with side length", side_length, "is:", area_of_square(side_length))
+
+
+
+
+
+
+ slip 20 q2 ) Write a Python program which finds sum of digits of a number. [20 M]
+Example n=130 then output is 4 (1+3+0).
+def sum_of_digits(n):
+    # Convert the number to a string
+    num_str = str(n)
+    # Initialize sum to 0
+    total_sum = 0
+    # Iterate over each character in the string
+    for digit_char in num_str:
+        # Convert the character back to an integer and add it to the sum
+        total_sum += int(digit_char)
+    return total_sum
+
+def main():
+    n = int(input("Enter a number: "))
+    digit_sum = sum_of_digits(n)
+    print("Sum of digits of", n, "is:", digit_sum)
+
+if _name_ == "_main_":
+    main()
+
+
+
+
+
+ slip 21 q1 Write a Python program to unpack a tuple in several variables
+def main():
+    # Define a tuple
+    my_tuple = (1, 2, 3)
+    
+    # Unpack the tuple into separate variables
+    a, b, c = my_tuple
+    
+    # Print the unpacked variables
+    print("a:", a)
+    print("b:", b)
+    print("c:", c)
+
+if _name_ == "_main_":
+    main()
+
+
+
+
+
+slip 21 q2(OR)) Write a Sequential search function which searches an item in a sorted list. The function
+should return the index of element to be searched in the list.  
+def sequential_search(sorted_list, target):
+    for index, value in enumerate(sorted_list):
+        if value == target:
+            return index
+        elif value > target:
+            # If the current value is greater than the target, 
+            # and since the list is sorted, the target won't be found further
+            return -1
+    return -1
+
+# Example usage:
+sorted_list = [1, 3, 5, 7, 9, 11, 13, 15]
+target = 7
+index = sequential_search(sorted_list, target)
+if index != -1:
+    print(f"The element {target} is found at index {index}.")
+else:
+    print("The element is not found in the list.")
+
+
+
